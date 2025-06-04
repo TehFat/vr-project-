@@ -41,7 +41,17 @@
        <a-assets>
         <a-asset-item id="windowModel" src="models/window_and_door.glb"></a-asset-item>
         <a-asset-item id="diningSetModel" src="models/simple_dining_table.glb"></a-asset-item> 
+        <a-asset-item id="clockModel" src="models/wall_clock.glb"></a-asset-item>
       </a-assets>
+
+      <!-- Wall Clock -->
+    <a-entity 
+  id="wallClock"
+  gltf-model="#clockModel" 
+  position="-3 2.5 -7.9" 
+  rotation="0 0 0"
+  scale="0.3 0.3 0.3">
+</a-entity>
 
         <a-entity 
      gltf-model="#windowModel" 
@@ -222,6 +232,8 @@ id="fatouDoor"
       </a-assets>
       <a-sky src="#day-sky"></a-sky>
     </a-scene>
-
+   
+  
+    
   </body>
 </html>
