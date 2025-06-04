@@ -1,0 +1,235 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      
+    <!-- Camera Rig -->
+<a-entity id="rig" position="0 1.6 0" wasd-controls>
+  <!-- Actual camera -->
+  <a-entity 
+    camera 
+    look-controls 
+    position="0 0 0">
+  </a-entity>
+</a-entity>
+
+     
+    <!-- Floor -->
+<a-assets>
+  <img id="wood-floor" src="pics/floor.jpeg">
+</a-assets>
+
+<!-- Floor with wood texture applied -->
+<a-plane 
+  position="0 0 -4" 
+  rotation="-90 0 0" 
+  width="8" 
+  height="8" 
+  src="#wood-floor"
+  repeat="4 4" 
+  material="side: double">
+</a-plane>
+
+
+
+      <!-- Front wall with window -->
+      <a-plane position="0 1.5 -6" rotation="0 0 0" width="8" height="3" color="#D3D3D3"></a-plane>
+
+      <a-assets>
+  <img id="flowerPic" src="pics/vase.webp" crossorigin="anonymous">
+      </a-assets>
+
+      <!-- White Frame behind the Flower Picture -->
+<a-plane 
+  position="-2.2 2 -5.991"  
+  rotation="0 0 0"
+  width="1.1" 
+  height="1.1"
+  color="#ffffff">
+</a-plane>
+
+      <!-- Flower Picture on Front Wall (left Side) -->
+      <a-plane src="#flowerPic"
+              position="-2.2 2 -5.99"
+              rotation="0 0 0"
+              width="1"
+              height="1"
+              material="side: double">
+      </a-plane>
+
+        <!-- Window Glass -->
+      <a-box 
+        position="0 1.5 -5.99" 
+        depth="0.05" 
+        height="1" 
+        width="1.5" 
+        color="#87CEFA" 
+        opacity="0.6">
+      </a-box>
+
+      <!-- Window Frame -->
+      <a-box position="0 2.26 -5.98" depth="0.06" height="0.05" width="2.6" color="#ffffff"></a-box>
+      <a-box position="0 0.74 -5.98" depth="0.06" height="0.05" width="2.6" color="#ffffff"></a-box>
+      <a-box position="-1.26 1.5 -5.98" depth="0.06" height="1.52" width="0.05" color="#ffffff"></a-box>
+      <a-box position="1.26 1.5 -5.98" depth="0.06" height="1.52" width="0.05" color="#ffffff"></a-box>
+
+      <!-- Window Handle -->
+      <a-cylinder 
+        position="1.1 1.5 -5.95" 
+        rotation="90 0 0" 
+        radius="0.03" 
+        height="0.3" 
+        color="#333333">
+      </a-cylinder>
+
+      <!-- Right-hand wall -->
+       <a-assets>
+      <img id="wallTexture" src="pics/wall1.jpg">
+       
+    </a-assets>
+
+      <a-plane position="4 1.5 -4" rotation="0 -90 0" width="8" height="3"  src="#wallTexture"  material="side: double"></a-plane>
+     
+    <!-- Door on the right-hand wall -->
+<a-box id="door" position="4 1 -4" rotation="0 -90 0" depth="0.1" height="2" width="0.9" color="#654321"
+       class="clickable"
+       event-set__enter="_event: mouseenter; color: #a0522d"
+       event-set__leave="_event: mouseleave; color: #654321"
+       onclick="location.href='room2.html'">
+</a-box>
+
+
+      <!--  Left-hand wall -->
+        <a-assets>
+      <img id="wallTexture" src="pics/wall1.jpg">
+      </a-assets>
+      <a-plane position="-4 1.5 -4" rotation="0 90 0" width="8" height="3" src="#wallTexture"  material="side: double"></a-plane>
+
+          <!-- Roof -->
+    <a-plane 
+      position="0 3 -4" 
+      rotation="90 0 0" 
+      width="8" 
+      height="8" 
+      color="#f0f0f0" 
+      material="side: double">
+    </a-plane>
+
+    <!-- Ambient Light -->
+ <a-entity light="type: ambient; intensity: 1.2; color: #ffffff">
+
+  <!-- Brighter Ceiling Lights -->
+<a-sphere position="-2 2.9 -2" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+<a-sphere position="2 2.9 -2" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+<a-sphere position="-2 2.9 -6" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+<a-sphere position="2 2.9 -6" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+
+</a-entity>
+
+    
+
+      <!-- Kitchen island -->
+      <a-box position="0 0.5 -2.5" width="2.5" height="1" depth="1" color="#FFFAFA"></a-box>
+
+      <a-entity 
+  gltf-model="#flowerVaseModel" 
+  position="0 1.1 -2.5"  
+  scale="0.4 0.4 0.4" 
+  rotation="0 180 0">
+</a-entity>
+
+
+     
+
+
+      <!-- Left Door -->
+    <a-box position="-0.625 0.5 -2.0" width="1.2" height="0.9" depth="0.05" color="#e0e0e0"></a-box>
+
+    <!-- Right Door -->
+    <a-box position="0.625 0.5 -2.0" width="1.2" height="0.9" depth="0.05" color="#e0e0e0"></a-box>
+
+    <!-- Left Handle -->
+    <a-box position="-0.2 0.5 -1.97" width="0.05" height="0.15" depth="0.02" color="#000000"></a-box>
+
+    <!-- Right Handle -->
+    <a-box position="0.2 0.5 -1.97" width="0.05" height="0.15" depth="0.02" color="#000000"></a-box>
+
+      <!-- Countertop -->
+      <a-box position="0 1.05 -2.5" width="2.6" height="0.1" depth="1.1" color="#cccccc"></a-box>
+
+      <!-- Stove on Countertop -->
+      <a-box position="-0.5 1.11 -2.3" width="0.7" height="0.05" depth="0.5" color="#2f2f2f"></a-box>
+
+      
+
+      <!-- Ring-Style Hanging Lamp -->
+<a-entity position="0 2.8 -2.5">
+  <!-- Hanging rod -->
+  <a-cylinder position="0 -0.3 0" radius="0.02" height="0.6" color="#444"></a-cylinder>
+
+  <!-- Ring lamp base -->
+  <a-torus position="0 -0.7 0" radius="0.5" radius-tubular="0.03" color="#999"></a-torus>
+
+  <!-- Small lights around ring -->
+  <a-sphere position="0.5 -0.7 0" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+  <a-sphere position="-0.5 -0.7 0" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+  <a-sphere position="0 -0.7 0.5" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+  <a-sphere position="0 -0.7 -0.5" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+</a-entity>
+
+
+      <!-- Sink Cabinet Unit (Left Wall) -->
+      <a-box position="-3.5 0.5 -4" width="1.7" height="1" depth="4" color="#FFFAFA"></a-box> <!-- cabinet -->
+      <a-box position="-3.5 1.05 -4" width="1.7" height="0.1" depth="4" color="#cccccc"></a-box> <!-- counter -->
+
+      <!-- Fruit Basket base (shallow bowl) on sink cabinet countertop -->
+      <a-cylinder position="-3.2 1.22 -2.3" radius="0.5" height="0.1" color="#8b4513" metalness="0.3" roughness="0.7" rotation="0 0 0"></a-cylinder>
+
+      <!-- Basket rim -->
+      <a-ring position="-3.2 1.2 -2.3" radius-inner="0.48" radius-outer="0.52" color="#a0522d"></a-ring>
+
+      <!-- Fruits inside the basket -->
+
+      <!-- Orange -->
+      <a-sphere position="-3.05 1.32 -2.3" radius="0.12" color="#ff8c00" metalness="0.2" roughness="0.4"></a-sphere>
+
+      <!-- Apple -->
+      <a-sphere position="-3.35 1.34 -2.35" radius="0.1" color="#d32f2f" metalness="0.3" roughness="0.5"></a-sphere>
+
+      <!-- Lemon -->
+      <a-sphere position="-3.1 1.33 -2.2" radius="0.09" color="#fff700" metalness="0.2" roughness="0.4"></a-sphere>
+
+      <!-- Green apple -->
+      <a-sphere position="-3.3 1.31 -2.2" radius="0.1" color="#4caf50" metalness="0.2" roughness="0.5"></a-sphere>
+
+      <!-- Banana (elongated fruit) -->
+      <a-cylinder position="-2.9 1.33 -2.15" radius="0.05" height="0.3" color="#fff176" rotation="0 0 25"></a-cylinder>
+
+
+      <a-cylinder position="-3.5 1.1 -4" radius="0.2" height="0.05" color="#87CEFA"></a-cylinder> <!-- sink bowl -->
+      <a-cylinder position="-3.4 1.25 -4" radius="0.03" height="0.2" color="#666666"></a-cylinder> <!-- faucet -->
+
+      
+      
+      <!-- NEW: Fridge-Freezer near window corner -->
+      <a-box position="2.8 1 -5.9" width="1.4" height="2.8" depth="0.6" color="#b0c4de"></a-box>
+      <a-box position="2.8 1.9 -5.9" width="1.4" height="0.05" depth="0.6" color="#ccc"></a-box> <!-- Divider -->
+
+      <!-- Sky background -->
+      <a-assets>
+        <img id="day-sky" src="pics/sky.jpg">
+      </a-assets>
+      <a-sky src="#day-sky"></a-sky>
+    </a-scene>
+  </body>
+</html>

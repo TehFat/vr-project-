@@ -1,0 +1,227 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      
+    <!-- Camera Rig -->
+<a-entity id="rig" position="0 1.6 0" wasd-controls>
+ 
+  <a-entity 
+    camera 
+    look-controls 
+    position="0 0 0">
+  </a-entity>
+</a-entity>
+
+     
+    <!-- Floor -->
+<a-assets>
+  <img id="wood-floor" src="pics/floor.jpeg">
+</a-assets>
+
+<!-- Floor with wood texture applied -->
+<a-plane 
+  position="0 0 -4" 
+  rotation="-90 0 0" 
+  width="8" 
+  height="8" 
+  src="#wood-floor"
+  repeat="4 4" 
+  material="side: double">
+</a-plane>
+
+
+
+      <!-- Front wall with window -->
+      <a-plane position="0 1.5 -8" rotation="0 0 0" width="8" height="3" color="#D3D3D3"></a-plane>
+     
+
+       <a-assets>
+        <a-asset-item id="windowModel" src="models/window_and_door.glb"></a-asset-item>
+        <a-asset-item id="diningSetModel" src="models/simple_dining_table.glb"></a-asset-item> 
+      </a-assets>
+
+        <a-entity 
+     gltf-model="#windowModel" 
+  position="0 1.1 -7.95" 
+  scale="0.02 0.01 0.02" 
+  rotation="0 0 0">
+    </a-entity>
+
+      <!-- Dining Set in Front of Window -->   
+<a-entity  id="diningSet"
+  gltf-model="#diningSetModel" 
+  position="-1.2 -0.3 -6.2" 
+  scale="0.0018 0.0018 0.0018" 
+  rotation="0 100 0">
+</a-entity>
+
+
+      <!-- Right-hand wall -->
+       <a-assets>
+      <img id="wallTexture" src="pics/wall1.jpg">
+       <a-asset-item id="doorModel" src="models/door.glb"></a-asset-item>
+    </a-assets>
+
+      <a-plane position="4 1.5 -4" rotation="0 -90 0" width="8" height="3"  src="#wallTexture"  material="side: double"></a-plane>
+     
+ <!-- Door Model on Right Wall -->
+<a-entity 
+id="fatouDoor"
+  gltf-model="#doorModel" 
+  position="4 0 -4" 
+  rotation="0 -90 0" 
+  scale="0.6 0.8 0.6"
+  class="clickable"
+  >
+</a-entity>
+
+
+     
+
+          <!-- Roof -->
+    <a-plane 
+      position="0 3 -4" 
+      rotation="90 0 0" 
+      width="8" 
+      height="8" 
+      color="#f0f0f0" 
+      material="side: double">
+    </a-plane>
+
+    <!-- Ambient Light -->
+ <a-entity light="type: ambient; intensity: 1.2; color: #ffffff">
+
+  <!-- Brighter Ceiling Lights -->
+<a-sphere position="-2 2.9 -2" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+<a-sphere position="2 2.9 -2" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+<a-sphere position="-2 2.9 -6" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+<a-sphere position="2 2.9 -6" radius="0.1" color="#ffffff"
+          light="type: point; intensity: 3; distance: 6; color: #ffffff"></a-sphere>
+
+</a-entity>
+
+    
+
+      <!-- Kitchen island -->
+      <a-box position="0 0.5 -2.5" width="2.5" height="1" depth="1" color="#FFFAFA"></a-box>
+<a-assets>
+  <a-asset-item id="flowerVaseModel" src="models/flowers_vase.glb"></a-asset-item>
+  <a-asset-item id="gasStoveModel" src="models/gas_stove.glb"></a-asset-item>
+</a-assets>
+      <a-entity 
+  gltf-model="#flowerVaseModel" 
+  position="1 1.1 -2.5"  
+  scale="0.8 0.8 0.8" 
+  rotation="0 180 0">
+</a-entity>
+
+
+     
+
+
+      <!-- Left Door -->
+    <a-box position="-0.625 0.5 -2.0" width="1.2" height="0.9" depth="0.05" color="#e0e0e0"></a-box>
+
+    <!-- Right Door -->
+    <a-box position="0.625 0.5 -2.0" width="1.2" height="0.9" depth="0.05" color="#e0e0e0"></a-box>
+
+    <!-- Left Handle -->
+    <a-box position="-0.2 0.5 -1.97" width="0.05" height="0.15" depth="0.02" color="#000000"></a-box>
+
+    <!-- Right Handle -->
+    <a-box position="0.2 0.5 -1.97" width="0.05" height="0.15" depth="0.02" color="#000000"></a-box>
+
+      <!-- Countertop -->
+      <a-box position="0 1.05 -2.5" width="2.6" height="0.1" depth="1.1" color="#cccccc"></a-box>
+
+      <!-- Stove on Countertop -->
+      <a-entity 
+  gltf-model="#gasStoveModel" 
+  position="-0.5 1.11 -2.3" 
+  scale="0.5 0.5 0.5"
+  rotation="0 180 0">
+</a-entity>
+
+      
+
+      <!-- Ring-Style Hanging Lamp -->
+      <a-entity position="0 2.8 -2.5">
+  <!-- Hanging rod -->
+  <a-cylinder position="0 -0.3 0" radius="0.02" height="0.6" color="#444"></a-cylinder>
+
+  <!-- Ring lamp base -->
+  <a-torus position="0 -0.7 0" radius="0.5" radius-tubular="0.03" color="#999"></a-torus>
+
+  <!-- Small lights around ring -->
+  <a-sphere position="0.5 -0.7 0" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+  <a-sphere position="-0.5 -0.7 0" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+  <a-sphere position="0 -0.7 0.5" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+  <a-sphere position="0 -0.7 -0.5" radius="0.03" color="#ffffe0"
+            light="type: point; intensity: 1; distance: 2; color: #fff"></a-sphere>
+</a-entity>
+
+       <!--  Left-hand wall -->
+        <a-assets>
+      <img id="wallTexture" src="pics/wall1.jpg">
+      <a-asset-item id="microwaveModel" src="models/microwave.glb"></a-asset-item>
+      </a-assets>
+      <a-plane position="-4 1.5 -4" rotation="0 90 0" width="8" height="3" src="#wallTexture"  material="side: double"></a-plane>
+
+      <a-entity 
+        gltf-model="#microwaveModel" 
+        position="-3.95 2.6 -5.5" 
+        rotation="0 90 0" 
+        scale="1.2 3 1.2">
+      </a-entity>
+
+      <!-- Sink Cabinet Unit (Left Wall) -->
+      <a-box position="-3.1 0.5 -3" width="1.7" height="1" depth="4" color="#FFFAFA"></a-box> <!-- cabinet -->
+      <a-box position="-3.1 1.05 -3" width="1.7" height="0.1" depth="4" color="#cccccc"></a-box> <!-- counter -->
+
+        <a-assets>
+        <a-asset-item id="pineappleModel" src="models/pineapple.glb"></a-asset-item>
+        <a-asset-item id="fruitBowlModel" src="models/fruit_bowl.glb"></a-asset-item>
+        </a-assets>
+        <!-- Pineapple on left side of the counter -->
+        <a-entity 
+        gltf-model="#pineappleModel" 
+        position="-3.2 1.1 -4.3" 
+        scale="0.2 0.2 0.2" 
+        rotation="0 45 0">
+        </a-entity>
+
+        <!-- Fruit bowl on right side of the counter -->
+        <a-entity 
+        gltf-model="#fruitBowlModel" 
+        position="-3.5 1.1 -2.4"
+        scale="0.05 0.05 0.05"
+        rotation="0 -30 0">
+        </a-entity>
+
+      <a-cylinder position="-3.5 1.1 -4" radius="0.2" height="0.05" color="#87CEFA"></a-cylinder> <!-- sink bowl -->
+      <a-cylinder position="-3.4 1.25 -4" radius="0.03" height="0.2" color="#666666"></a-cylinder> <!-- faucet -->
+
+      
+      
+      <!--  Fridge-Freezer near window corner -->
+      <a-box position="2.8 1 -7.9" width="1.4" height="2.8" depth="0.6" color="#b0c4de"></a-box>
+      <a-box position="2.8 1.9 -7.9" width="1.4" height="0.05" depth="0.6" color="#ccc"></a-box> <!-- Divider -->
+
+      <!-- Sky background -->
+      <a-assets>
+        <img id="day-sky" src="pics/sky.jpg">
+      </a-assets>
+      <a-sky src="#day-sky"></a-sky>
+    </a-scene>
+
+  </body>
+</html>
