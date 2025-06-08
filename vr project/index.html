@@ -4,14 +4,16 @@
   </head>
   <body>
     <a-scene>
-      
+ <a-entity sound="src: url(models/background_musik.mp3); autoplay: true; loop: true; volume: 0.5"></a-entity>
+     
     <!-- Camera Rig -->
-<a-entity id="rig" position="0 1.6 0" wasd-controls>
+<a-entity  wasd-controls>
  
   <a-entity 
     camera 
     look-controls 
-    position="0 0 0">
+    position="0 1.6 0"
+    rotation="0 180 0">
   </a-entity>
 </a-entity>
 
@@ -42,7 +44,17 @@
         <a-asset-item id="windowModel" src="models/window_and_door.glb"></a-asset-item>
         <a-asset-item id="diningSetModel" src="models/simple_dining_table.glb"></a-asset-item> 
         <a-asset-item id="clockModel" src="models/wall_clock.glb"></a-asset-item>
+         <a-asset-item id="fridgeModel" src="models/fridge_freezer.glb"></a-asset-item>
       </a-assets>
+
+      <!-- Fridge-Freezer -->
+       <a-entity 
+        gltf-model="#fridgeModel" 
+        position="2.8 1.4 -7.9" 
+        scale="1.81 1.5 1" 
+        rotation="0 0 0">
+      </a-entity>
+
 
       <!-- Wall Clock -->
     <a-entity 
@@ -63,7 +75,7 @@
       <!-- Dining Set in Front of Window -->   
 <a-entity  id="diningSet"
   gltf-model="#diningSetModel" 
-  position="-1.2 -0.3 -6.2" 
+  position="-1.2 -0.1 -6.2" 
   scale="0.0018 0.0018 0.0018" 
   rotation="0 100 0">
 </a-entity>
@@ -73,9 +85,11 @@
        <a-assets>
       <img id="wallTexture" src="pics/wall1.jpg">
        <a-asset-item id="doorModel" src="models/door.glb"></a-asset-item>
+        
     </a-assets>
 
       <a-plane position="4 1.5 -4" rotation="0 -90 0" width="8" height="3"  src="#wallTexture"  material="side: double"></a-plane>
+      
      
  <!-- Door Model on Right Wall -->
 <a-entity 
@@ -182,25 +196,78 @@ id="fatouDoor"
        <!--  Left-hand wall -->
         <a-assets>
       <img id="wallTexture" src="pics/wall1.jpg">
-      <a-asset-item id="microwaveModel" src="models/microwave.glb"></a-asset-item>
+      <a-asset-item id="tvModel" src="models/tv.glb"></a-asset-item>
+      <a-asset-item id="ovenkModel" src="models/oven.glb"></a-asset-item>
       </a-assets>
       <a-plane position="-4 1.5 -4" rotation="0 90 0" width="8" height="3" src="#wallTexture"  material="side: double"></a-plane>
 
       <a-entity 
-        gltf-model="#microwaveModel" 
-        position="-3.95 2.6 -5.5" 
-        rotation="0 90 0" 
-        scale="1.2 3 1.2">
+        gltf-model="#tvModel" 
+        position="-3.95 2.1 -6.2" 
+        rotation="0 150 0" 
+        scale="1 1 1">
       </a-entity>
 
       <!-- Sink Cabinet Unit (Left Wall) -->
       <a-box position="-3.1 0.5 -3" width="1.7" height="1" depth="4" color="#FFFAFA"></a-box> <!-- cabinet -->
       <a-box position="-3.1 1.05 -3" width="1.7" height="0.1" depth="4" color="#cccccc"></a-box> <!-- counter -->
 
+      
+
+<!-- Oven  -->
+<a-box position="-2.2 0.5 -3" width="0.05" height="0.8" depth="0.5" color="#333333"></a-box>
+<!-- Oven handle -->
+<a-box position="-2.23 0.5 -3" width="0.02" height="0.05" depth="0.2" color="#ffff"></a-box>
+
+<!-- Left-side door -->
+<a-box position="-2.2 0.5 -3.8" width="0.05" height="0.9" depth="0.6" color="#e0e0e0"></a-box>
+<a-box position="-2.12 0.8 -1.9" width="0.02" height="0.15" depth="0.05" color="#000000"></a-box>
+
+<!-- Right-side door -->
+<a-box position="-2.2 0.5 -2.2" width="0.05" height="0.9" depth="0.6" color="#e0e0e0"></a-box>
+<a-box position="-2.12 0.8 -1.9" width="0.02" height="0.15" depth="0.05" color="#000000"></a-box>
+
+
+<!-- Drawer 1 (Top) -->
+<a-box position="-2.2 0.8 -1.4" width="0.04" height="0.25" depth="0.8" color="#e0e0e0"></a-box>
+<a-box position="-2.12 0.8 -1.4" width="0.02" height="0.05" depth="0.2" color="#000000"></a-box>
+
+<!-- Drawer 2 (Middle) -->
+<a-box position="-2.2 0.5 -1.4" width="0.04" height="0.25" depth="0.8" color="#e0e0e0"></a-box>
+<a-box position="-2.12 0.5 -1.4" width="0.02" height="0.05" depth="0.2" color="#000000"></a-box>
+
+<!-- Drawer 3 (Bottom) -->
+<a-box position="-2.2 0.2 -1.4" width="0.04" height="0.25" depth="0.8" color="#e0e0e0"></a-box>
+<a-box position="-2.12 0.2 -1.4" width="0.02" height="0.05" depth="0.2" color="#000000"></a-box>
+
+
+
+
         <a-assets>
         <a-asset-item id="pineappleModel" src="models/pineapple.glb"></a-asset-item>
         <a-asset-item id="fruitBowlModel" src="models/fruit_bowl.glb"></a-asset-item>
+         <a-asset-item id="sinkModel" src="models/kitchen_sink.glb"></a-asset-item>
         </a-assets>
+
+      <!-- Sink on left side of the counter -->
+
+      <a-entity 
+      id="sink"
+        gltf-model="#sinkModel" 
+        position="-3.8 1 -3.1" 
+        scale="1 1 1.9" 
+        rotation="0 90 0">
+      </a-entity>
+      <a-cylinder 
+          id="waterFlow"
+          position="-3.8 1.05 -3.1"
+          radius="0.02" 
+          height="0.4" 
+          color="blue" 
+          visible="false">
+        </a-cylinder>
+
+
         <!-- Pineapple on left side of the counter -->
         <a-entity 
         gltf-model="#pineappleModel" 
@@ -212,19 +279,18 @@ id="fatouDoor"
         <!-- Fruit bowl on right side of the counter -->
         <a-entity 
         gltf-model="#fruitBowlModel" 
-        position="-3.5 1.1 -2.4"
+        position="-3.5 1.1 -2.1"
         scale="0.05 0.05 0.05"
         rotation="0 -30 0">
         </a-entity>
+      <!-- Oven on left wall -->
+      <a-entity 
+        gltf-model="#ovenkModel" 
+        position="-3.7 1.5 -1.5" 
+        rotation="0 180 0" 
+        scale="0.3 0.4 0.2">
+      </a-entity>
 
-      <a-cylinder position="-3.5 1.1 -4" radius="0.2" height="0.05" color="#87CEFA"></a-cylinder> <!-- sink bowl -->
-      <a-cylinder position="-3.4 1.25 -4" radius="0.03" height="0.2" color="#666666"></a-cylinder> <!-- faucet -->
-
-      
-      
-      <!--  Fridge-Freezer near window corner -->
-      <a-box position="2.8 1 -7.9" width="1.4" height="2.8" depth="0.6" color="#b0c4de"></a-box>
-      <a-box position="2.8 1.9 -7.9" width="1.4" height="0.05" depth="0.6" color="#ccc"></a-box> <!-- Divider -->
 
       <!-- Sky background -->
       <a-assets>
@@ -233,7 +299,31 @@ id="fatouDoor"
       <a-sky src="#day-sky"></a-sky>
     </a-scene>
    
-  
+  <script>
+  AFRAME.registerComponent('sink-proximity', {
+    schema: { distance: { type: 'number', default: 1.5 } },
+    
+    tick: function () {
+      const sink = this.el;
+      const camera = document.querySelector('[camera]');
+      const waterFlow = document.querySelector('#waterFlow');
+      
+      if (!camera || !waterFlow) return;
+
+      const sinkPos = sink.object3D.position;
+      const camPos = camera.object3D.position;
+
+      const distance = sinkPos.distanceTo(camPos);
+
+      if (distance < this.data.distance) {
+        waterFlow.setAttribute('visible', 'true');
+      } else {
+        waterFlow.setAttribute('visible', 'false');
+      }
+    }
+  });
+</script>
+
     
   </body>
 </html>
