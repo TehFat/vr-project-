@@ -4,10 +4,14 @@
   </head>
   <body>
     <a-scene>
- <a-entity sound="src: url(models/background_musik.mp3); autoplay: true; loop: true; volume: 0.5"></a-entity>
+ <a-entity id="tvAudio"
+  position="-3.95 2.1 -6.2"
+  sound="src: url(models/background_musik.mp3); autoplay: true; loop: true; positional: true; distanceModel: linear; maxDistance: 4">
+</a-entity>
+
      
     <!-- Camera Rig -->
-<a-entity  wasd-controls>
+<a-entity  wasd-controls check-proximity="target: #tvScreen; distance: 2.5">
  
   <a-entity 
     camera 
@@ -76,7 +80,7 @@
 <a-entity  id="diningSet"
   gltf-model="#diningSetModel" 
   position="-1.2 -0.1 -6.2" 
-  scale="0.0018 0.0018 0.0018" 
+  scale="0.0017 0.0017 0.0017" 
   rotation="0 100 0">
 </a-entity>
 
@@ -84,23 +88,28 @@
       <!-- Right-hand wall -->
        <a-assets>
       <img id="wallTexture" src="pics/wall1.jpg">
-       <a-asset-item id="doorModel" src="models/door.glb"></a-asset-item>
+       <a-assets><img id="poster" src="pics/poster1.webp"></a-assets> 
         
     </a-assets>
 
       <a-plane position="4 1.5 -4" rotation="0 -90 0" width="8" height="3"  src="#wallTexture"  material="side: double"></a-plane>
       
      
- <!-- Door Model on Right Wall -->
-<a-entity 
-id="fatouDoor"
-  gltf-model="#doorModel" 
-  position="4 0 -4" 
+ <a-plane 
+  position="3.9 1.9 -5.5" 
   rotation="0 -90 0" 
-  scale="0.6 0.8 0.6"
-  class="clickable"
-  >
-</a-entity>
+  width="0.6" 
+  height="0.5" 
+  material="src: #poster; side: double">
+</a-plane>
+<a-text 
+  value="in 2025" 
+  position="3.9 1.7 -5.5" 
+  rotation="0 -90 0" 
+  align="center" 
+  color="#000000" 
+  width="2">
+</a-text> 
 
 
      
@@ -133,16 +142,15 @@ id="fatouDoor"
     
 
       <!-- Kitchen island -->
-      <a-box position="0 0.5 -2.5" width="2.5" height="1" depth="1" color="#FFFAFA"></a-box>
+      <a-box position="0 0.5 -2.5" width="2.5" height="0.9" depth="1" color="#FFFAFA"></a-box>
+      <!-- Countertop -->
+      <a-box position="0 1.01 -2.5" width="2.6" height="0.1" depth="1.1" color="#cccccc"></a-box>
 <a-assets>
   <a-asset-item id="flowerVaseModel" src="models/flowers_vase.glb"></a-asset-item>
   <a-asset-item id="gasStoveModel" src="models/gas_stove.glb"></a-asset-item>
+  <a-asset-item id="riceModel" src="models/rice.glb"></a-asset-item>
 </a-assets>
-      <a-entity 
-  gltf-model="#flowerVaseModel" 
-  position="1 1.1 -2.5"  
-  scale="0.8 0.8 0.8" 
-  rotation="0 180 0">
+      <a-entity gltf-model="#flowerVaseModel"  position="1 1.1 -2.5"  scale="0.8 0.8 0.8" rotation="0 180 0">
 </a-entity>
 
 
@@ -150,10 +158,10 @@ id="fatouDoor"
 
 
       <!-- Left Door -->
-    <a-box position="-0.625 0.5 -2.0" width="1.2" height="0.9" depth="0.05" color="#e0e0e0"></a-box>
+    <a-box position="-0.625 0.5 -2.0" width="1.2" height="0.8" depth="0.05" color="#e0e0e0"></a-box>
 
     <!-- Right Door -->
-    <a-box position="0.625 0.5 -2.0" width="1.2" height="0.9" depth="0.05" color="#e0e0e0"></a-box>
+    <a-box position="0.625 0.5 -2.0" width="1.2" height="0.8" depth="0.05" color="#e0e0e0"></a-box>
 
     <!-- Left Handle -->
     <a-box position="-0.2 0.5 -1.97" width="0.05" height="0.15" depth="0.02" color="#000000"></a-box>
@@ -161,8 +169,7 @@ id="fatouDoor"
     <!-- Right Handle -->
     <a-box position="0.2 0.5 -1.97" width="0.05" height="0.15" depth="0.02" color="#000000"></a-box>
 
-      <!-- Countertop -->
-      <a-box position="0 1.05 -2.5" width="2.6" height="0.1" depth="1.1" color="#cccccc"></a-box>
+      
 
       <!-- Stove on Countertop -->
       <a-entity 
@@ -197,7 +204,7 @@ id="fatouDoor"
         <a-assets>
       <img id="wallTexture" src="pics/wall1.jpg">
       <a-asset-item id="tvModel" src="models/tv.glb"></a-asset-item>
-      
+
       </a-assets>
       <a-plane position="-4 1.5 -4" rotation="0 90 0" width="8" height="3" src="#wallTexture"  material="side: double"></a-plane>
 
@@ -207,17 +214,18 @@ id="fatouDoor"
         rotation="0 150 0" 
         scale="1 1 1">
       </a-entity>
+      
 
       <!-- Sink Cabinet Unit (Left Wall) -->
-      <a-box position="-3.1 0.5 -3" width="1.7" height="1" depth="4" color="#FFFAFA"></a-box> <!-- cabinet -->
-      <a-box position="-3.1 1.05 -3" width="1.7" height="0.1" depth="4" color="#cccccc"></a-box> <!-- counter -->
+      <a-box position="-3.1 0.5 -3" width="1.7" height="0.9" depth="4" color="#FFFAFA"></a-box> <!-- cabinet -->
+      <a-box position="-3.1 1.0 -3" width="1.7" height="0.1" depth="4" color="#cccccc"></a-box> <!-- counter -->
 
-      
+       
 
 <!-- Oven  -->
 <a-box position="-2.2 0.5 -3" width="0.05" height="0.8" depth="0.5" color="#333333"></a-box>
 <!-- Oven handle -->
-<a-box position="-2.23 0.5 -3" width="0.02" height="0.05" depth="0.2" color="#ffff"></a-box>
+<a-box position="-2.11 0.8 -3" width="0.05" height="0.05" depth="0.2" color="#ffffff"></a-box>
 
 <!-- Left-side door -->
 <a-box position="-2.2 0.5 -3.8" width="0.05" height="0.9" depth="0.6" color="#e0e0e0"></a-box>
@@ -267,12 +275,16 @@ id="fatouDoor"
           visible="false">
         </a-cylinder>
 
+        <a-entity gltf-model="#riceModel" 
+          position="-1.1 1.2 -5.1" 
+          scale="1 1 1">
+        </a-entity>
 
         <!-- Pineapple on left side of the counter -->
         <a-entity 
         gltf-model="#pineappleModel" 
-        position="-3.2 1.1 -4.3" 
-        scale="0.2 0.2 0.2" 
+        position="-3.6 1.1 -4.3" 
+        scale="0.1 0.1 0.1" 
         rotation="0 45 0">
         </a-entity>
 
@@ -291,30 +303,8 @@ id="fatouDoor"
       <a-sky src="#day-sky"></a-sky>
     </a-scene>
    
-  <script>
-  AFRAME.registerComponent('sink-proximity', {
-    schema: { distance: { type: 'number', default: 1.5 } },
-    
-    tick: function () {
-      const sink = this.el;
-      const camera = document.querySelector('[camera]');
-      const waterFlow = document.querySelector('#waterFlow');
-      
-      if (!camera || !waterFlow) return;
+    <script src="script.js"></script>
 
-      const sinkPos = sink.object3D.position;
-      const camPos = camera.object3D.position;
-
-      const distance = sinkPos.distanceTo(camPos);
-
-      if (distance < this.data.distance) {
-        waterFlow.setAttribute('visible', 'true');
-      } else {
-        waterFlow.setAttribute('visible', 'false');
-      }
-    }
-  });
-</script>
 
     
   </body>
